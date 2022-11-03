@@ -1,12 +1,5 @@
 from django.core.management import BaseCommand
-
-from reviews.models import (
-    Category,
-    Comment,
-    Genre,
-    Review,
-    Title
-)
+from reviews.models import Category, Comment, Genre, Review, Title
 from users.models import User
 
 ALREDY_LOADED_ERROR_MESSAGE = """
@@ -103,8 +96,7 @@ class Command(BaseCommand):
                         text=text,
                         author=User.objects.get(pk=id_author),
                         score=score,
-                        pub_date=pub_date
-                    )
+                        pub_date=pub_date)
                     review.save()
 
         print("Loading comments data")

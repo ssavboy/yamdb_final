@@ -1,29 +1,27 @@
 from django.conf import settings
 from django.contrib.auth.tokens import default_token_generator
-from django.db import IntegrityError
 from django.core.mail import send_mail
+from django.db import IntegrityError
 from django.db.models import Avg
 from django.shortcuts import get_object_or_404
-from rest_framework import viewsets, filters
-from rest_framework import status
+from rest_framework import filters, status, viewsets
 from rest_framework.decorators import action
-from rest_framework.permissions import IsAuthenticated, AllowAny
+from rest_framework.permissions import AllowAny, IsAuthenticated
 from rest_framework.response import Response
-from rest_framework_simplejwt.tokens import AccessToken
-from rest_framework.views import APIView
 from rest_framework.serializers import ValidationError
+from rest_framework.views import APIView
+from rest_framework_simplejwt.tokens import AccessToken
+from reviews.models import Category, Genre, Review, Title
+from users.models import User
 
-from .serializers import CategoriesSerializer, CommentSerializer
-from .serializers import GenreSerializer, TitleSerializer
-from .serializers import ReviewSerializer, ReadOnlyTitleSerializer
-from .serializers import SignUpSerializer, TokenSerializer, UserSerializer
-from reviews.models import Category, Genre, Title, Review
-from .permissions import IsAuthorModeratorAdminOrReadOnly
-from .permissions import IsAdminOrReadOnly
-from .permissions import IsAdmin
 from .filters import TitlesFilter
 from .mixins import ListCreateDestroyViewSet
-from users.models import User
+from .permissions import (IsAdmin, IsAdminOrReadOnly,
+                          IsAuthorModeratorAdminOrReadOnly)
+from .serializers import (CategoriesSerializer, CommentSerializer,
+                          GenreSerializer, ReadOnlyTitleSerializer,
+                          ReviewSerializer, SignUpSerializer, TitleSerializer,
+                          TokenSerializer, UserSerializer)
 
 
 class UserViewSet(viewsets.ModelViewSet):

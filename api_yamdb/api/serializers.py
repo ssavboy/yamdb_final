@@ -1,16 +1,9 @@
 from django.conf import settings
 from django.core.validators import MaxValueValidator, MinValueValidator
 from rest_framework import serializers
-
-from users.models import User
+from reviews.models import Category, Comment, Genre, Review, Title
 from users.mixins import UsernameValidatorMixin
-from reviews.models import (
-    Category,
-    Comment,
-    Genre,
-    Review,
-    Title
-)
+from users.models import User
 
 
 class UserSerializer(serializers.ModelSerializer, UsernameValidatorMixin):
