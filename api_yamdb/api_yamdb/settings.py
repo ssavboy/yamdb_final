@@ -4,7 +4,7 @@ from datetime import timedelta
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 SECRET_KEY = os.getenv('SECRET_KEY', default='awdadsadwqdd')
 
-DEBUG = True
+DEBUG = False
 HOST = os.getenv('HOST', default='123.1.1.0')
 ALLOWED_HOSTS = ['*']
 
